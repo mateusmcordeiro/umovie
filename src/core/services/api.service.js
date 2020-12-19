@@ -3,7 +3,7 @@ import defaultInterceptor from "../interceptors/default.interceptor";
 
 const ApiInterceptorProvider = (API_ENV_VARIABLE = 'main', token = null) => {
     let API_ENV = API_ENV_VARIABLE.toUpperCase();
-    API_ENV = `${API_ENV}_API_URL`;
+    API_ENV = `VUE_APP_${API_ENV}_API_URL`;
     return defaultInterceptor(API_ENV, token);
 }
 

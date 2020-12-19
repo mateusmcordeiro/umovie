@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const defaultInterceptor = (API_ENV_VARIABLE = 'MAIN_API_URL', token = null) => {
-
     let config = {
         baseURL: process.env[API_ENV_VARIABLE]
     }
