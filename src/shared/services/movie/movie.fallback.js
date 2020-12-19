@@ -16,5 +16,31 @@ export default class MovieFallback {
     }
     return this.ApiService[method](`movie/${listName}`, params);
   }
+
+  async get(movieId) {
+    const movie = await this.getMovie(movieId);
+    const credits = await this.getMovieCredits(movieId);
+    return { movie, credits };
+  }
+
+  getMovie(movieId) {
+    if (this.movieState.movieInfos.has(movieId)) {
+      return Promise.resolve(
+        {data: this.movieState.movieInfos.get(movieId)}
+      );
+    }
+    return this.ApiService.get(`movie/${movieId}`);
+  }
+
+  getMovieCredits(movieId) {
+    if (this.movieState.movieCredits.has(movieId)) {
+      return Promise.resolve(
+        {data: this.movieState.movieCredits.get(movieId)}
+      );
+    }
+    return this.ApiService.get(`movie/${movieId}/credits`);
+  }
+
+
   
 }

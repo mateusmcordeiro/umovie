@@ -17,8 +17,18 @@ export default class MovieService
           params,
           'get'        
         );
+      },
+      getMovie(movieId){
+        return fallback.getMovie(movieId);
+      },
+      getMovieCredits(movieId){
+        return fallback.getMovieCredits(movieId);
+      },
+      get(movieId) {
+        return fallback.get(movieId)
       }
     }
+    
   
   }
   

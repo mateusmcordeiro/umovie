@@ -2,7 +2,8 @@ import { reactive, provide, inject } from 'vue';
 
 export const stateSymbol = Symbol('state');
 export const createState = () => reactive({ 
-  movieInfoDictionary: new Map(),
+  movieInfos: new Map(),
+  movieCredits: new Map(),
   movieList: new Map(),
   pagination: {
     page: 1
