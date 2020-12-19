@@ -14,7 +14,6 @@ export default {
         movieList.set(data.page, data);
       }
     );
-    
     return { movieList }
   }
 }

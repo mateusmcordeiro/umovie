@@ -2,17 +2,17 @@ export default [
   {
     path: '/',
     name: '',
-    component: lazyLoadView(import('@views/Home.vue')),
+    component: () => lazyLoadView(import('@views/Home.vue')),
   },
   {
     path: '/movie/:movieId',
     name: 'movie',
-    component: lazyLoadView(import('@views/Movie.vue')),
+    component: () => lazyLoadView(() => import('@views/Movie.vue')),
   },
   {
     path: '/404',
     name: '404',
-    component: lazyLoadView(import('@views/_404.vue')),
+    component: () => lazyLoadView(import('@views/_404.vue')),
     props: true,
   },
   {

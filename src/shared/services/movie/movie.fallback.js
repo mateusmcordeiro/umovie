@@ -11,7 +11,7 @@ export default class MovieFallback {
   fetchList(listName, params = { page: 1 }, method = 'get') {
     if (this.movieState.movieList.has(params.page)) {
       return Promise.resolve(
-        this.movieState.movieList.get(params.page)
+        {data: this.movieState.movieList.get(params.page)}
       );
     }
     return this.ApiService[method](`movie/${listName}`, params);
