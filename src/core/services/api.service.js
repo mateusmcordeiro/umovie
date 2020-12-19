@@ -7,41 +7,37 @@ const ApiInterceptorProvider = (API_ENV_VARIABLE = 'main', token = null) => {
     return defaultInterceptor(API_ENV, token);
 }
 
-export default class ApiService {
+export default class ApiService 
+{
     constructor(apiName = 'main', token = null) {
         this.apiName = apiName;
         this.token = token;
         this.axiosHttp = ApiInterceptorProvider(apiName, token);
     }
 
-    get(uri, params )
-    {
+    get(uri, params ) {
         return this.axiosHttp.get(uri,{params}).catch(error => {
             throw new Error(`ApiService ${error}`);
         });
     }
 
-    post(uri, params)
-    {
+    post(uri, params) {
         return this.axiosHttp.post(uri,params);
     }
 
-    put(uri, params)
-    {
+    put(uri, params) {
         return this.axiosHttp.put(uri,params);
     }
 
-    patch(uri, params)
-    {
+    patch(uri, params) {
         return this.axiosHttp.patch(uri,params);
     }
 
-    delete(uri)
-    {
+    delete(uri) {
         return this.axiosHttp.delete(uri).catch(error => {
             throw new Error(`ApiService ${error}`);
         });
     }
-};
+}
 
 
