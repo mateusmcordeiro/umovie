@@ -3,7 +3,7 @@
     <header class="card__header">
       <slot name="header"></slot>
     </header>
-    <div class="card__body container">
+    <div class="card__body card__container">
       <slot name="icon"></slot>
       <div class="container__content">
         <slot name="body"></slot>
