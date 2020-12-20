@@ -39,11 +39,15 @@ export default {
         return [];
       })
     )
-    MovieService.use(state).fetchList('now_playing').then(
-      ({data}) => {
-        movieList.set(data.page, data);
-      }
-    );
+    onMounted(() => {
+      state.loading = true;
+      MovieService.use(state).fetchList('now_playing').then(
+        ({data}) => {
+          movieList.set(data.page, data);
+        }
+      );
+    })
+    
     filters.vote_average = true;
     const handleScroll = () => {
       const mouseOnBottom =  document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
@@ -93,6 +97,11 @@ export default {
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
     row-gap: 20px;
+    .card {
+      @include media-breakpoint-down(sm) {
+        margin: 0 auto;
+      }
+    }
   }
     
   

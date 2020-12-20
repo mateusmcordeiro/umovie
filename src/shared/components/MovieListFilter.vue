@@ -72,6 +72,7 @@ export default {
       height: 100%;
       border: none;
       padding-top: 12px;
+      background-color: white;
     }
   }
 </style>

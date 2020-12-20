@@ -29,7 +29,6 @@
     </template>
   </BaseCard>
 </template>
-
 <script>
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';

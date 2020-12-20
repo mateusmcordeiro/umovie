@@ -118,9 +118,13 @@ export default {
   height: 100vh;
   background: $shark-color;
 }
+
 header {
   height: 100vh;
   position: relative;
+  @include media-breakpoint-down(md) {
+    height: 1165px;
+  }
   .container {
     position: absolute;
     left: 0;
@@ -193,6 +197,7 @@ header {
       .casts {
         display: flex;
         overflow-x: scroll;
+        overflow-y: hidden;
         width: 100%;
         max-width: 784px;
         margin-top: 10px;
