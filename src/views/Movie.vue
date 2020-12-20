@@ -71,7 +71,7 @@ export default {
     const { movieInfos, movieCredits } = state;
     const movieId = parseInt(
       window.location.pathname.substr(
-        '/movie/'.length, window.location.pathname.length
+        window.location.pathname.indexOf('/movie/') + '/movie/'.length, window.location.pathname.length
       )
     ,10);
     MovieService.use(state).get(movieId).then(

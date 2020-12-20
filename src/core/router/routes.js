@@ -4,7 +4,7 @@ import _404 from '@views/_404.vue';
 
 export default [
   {
-    path: '/umovie',
+    path: '/umovie/',
     name: 'home',
     component: Home,
   },
@@ -21,6 +21,6 @@ export default [
   },
   {
     path: '/umovie/:pathMatch(.*)*',
-    redirect: '404',
+    redirect: '/umovie/404',
   },
 ]
