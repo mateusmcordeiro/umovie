@@ -1,18 +1,23 @@
+import Home from '@views/Home.vue';
+import Movie from '@views/Movie.vue';
+import _404 from '@views/_404.vue';
+
 export default [
   {
     path: '/',
-    name: '',
-    component: () => lazyLoadView(import('@views/Home.vue')),
+    name: 'home',
+    component: Home,
   },
   {
     path: '/movie/:movieId',
     name: 'movie',
-    component: () => lazyLoadView(() => import('@views/Movie.vue')),
+    component: Movie,
+    props: true,
   },
   {
     path: '/404',
     name: '404',
-    component: () => lazyLoadView(import('@views/_404.vue')),
+    component: _404,
     props: true,
   },
   {
@@ -20,21 +25,3 @@ export default [
     redirect: '404',
   },
 ]
-
-
-function lazyLoadView(AsyncView) {
-  const AsyncHandler = () => ({
-    component: AsyncView,
-    loading: require('@views/_loading.vue').default,
-    delay: 400,
-    error: require('@views/_timeout.vue').default,
-    timeout: 10000,
-  })
-
-  return Promise.resolve({
-    functional: true,
-    render(h, { data, children }) {
-      return h(AsyncHandler, data, children)
-    },
-  })
-}
