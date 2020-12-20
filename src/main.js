@@ -7,4 +7,4 @@ import './index.css'
 createApp(App)
   .use(router)
   .provide(stateSymbol, createState())
-  .mount('#app')
+  .mount('#app');
