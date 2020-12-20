@@ -3,7 +3,7 @@
       <div class="banner__backdrop" :style="{'background-image': movieBackgroundURL}"></div>
       <div class="container">
         <div class="row">
-          <h1 class="logo">
+          <h1 class="logo" @click="goHome">
             <span>u</span>Movie
           </h1>
         </div>
@@ -51,6 +51,7 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router';
 import { useState } from '@state/movie';
 import MovieService from '#services/movie';
 import { computed } from 'vue';
@@ -66,6 +67,7 @@ export default {
   },
   setup() {
     const state = useState();
+    const router = useRouter();
     const { movieInfos, movieCredits } = state;
     const movieId = parseInt(
       window.location.pathname.substr(
@@ -98,9 +100,14 @@ export default {
       return '';
     })
 
+    const goHome = () => {
+      router.push(
+        { 
+          name: 'home'
+      })
+    }
     
-    
-    return {movie, movieCasts, movieBackgroundURL, moviePosterImage, formatDateWithMonthLiteral}
+    return {movie, movieCasts, movieBackgroundURL, moviePosterImage, formatDateWithMonthLiteral, goHome}
   }
 }
 </script>

@@ -3,6 +3,7 @@ header.banner {
   padding-bottom: 40px;
 }
 .logo {
+  cursor: pointer;
   @extend %typography-xlarge;
   color: white;
   span {
