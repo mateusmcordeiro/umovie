@@ -74,7 +74,7 @@ export default {
     .card__description {
       @extend %typography-small;
     }
-    .card__body.container {
+    .card__body.card__container {
       .icon {
         position: absolute;
         width: 100%;
