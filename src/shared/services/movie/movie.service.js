@@ -11,7 +11,7 @@ export default class MovieService
     this.MovieFallback = new MovieFallback(state);
     const fallback = this.MovieFallback;
     return {
-      fetchList(listName, params = { page: 1 }) {
+      fetchList(listName, params = { page: 1, language: 'pt-br' }) {
         return fallback.fetchList(
           listName,
           params,

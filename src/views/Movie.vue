@@ -36,7 +36,7 @@
                 </p>
               </div>
               <div class="block__content content__cast">
-                <p class="title">Casts</p>
+                <p class="title">Atores</p>
                 <div class="casts">
                   <MovieCastsCard v-for="cast in movieCasts" :key="cast.id" :cast="cast"/>
                 </div>

@@ -48,7 +48,7 @@ export default {
     const handleScroll = () => {
       const mouseOnBottom =  document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
       if (mouseOnBottom) {
-        MovieService.use(state).fetchList('now_playing', { page: pagination.page + 1 }).then(
+        MovieService.use(state).fetchList('now_playing', { page: pagination.page + 1, language: 'pt-br' }).then(
           ({data}) => {
             movieList.set(data.page, data);
             pagination.page = data.page;

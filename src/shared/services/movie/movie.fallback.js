@@ -29,7 +29,7 @@ export default class MovieFallback {
         {data: this.movieState.movieInfos.get(movieId)}
       );
     }
-    return this.ApiService.get(`movie/${movieId}`);
+    return this.ApiService.get(`movie/${movieId}`,{ language: 'pt-br' });
   }
 
   getMovieCredits(movieId) {
