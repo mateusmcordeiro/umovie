@@ -48,7 +48,6 @@ export default {
       );
     })
     
-    filters.vote_average = true;
     const handleScroll = () => {
       const mouseOnBottom =  document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
       if (mouseOnBottom) {
