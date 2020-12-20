@@ -7,6 +7,10 @@ export const createState = () => reactive({
   movieList: new Map(),
   pagination: {
     page: 1
+  },
+  filter: {
+    vote_average: false,
+    release_date: false
   }
 });
 
