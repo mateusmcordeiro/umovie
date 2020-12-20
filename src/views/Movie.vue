@@ -205,6 +205,7 @@ header {
           max-width: 148px;
           max-height: 222px;
           margin-right: 10px;
+          
         }
       }
 

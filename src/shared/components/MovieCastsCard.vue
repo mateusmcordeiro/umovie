@@ -35,6 +35,15 @@ export default {
 <style lang="scss" scoped>
   @import "@design";
   .card {
+    .card__header {
+      display: flex;
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+      img {
+        height: 220px;
+      }
+    }
     p {
       margin: 0;
     }
