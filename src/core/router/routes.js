@@ -11,8 +11,7 @@ export default [
   {
     path: '/movie/:movieId',
     name: 'movie',
-    component: Movie,
-    props: true,
+    component: Movie
   },
   {
     path: '/404',

@@ -17,7 +17,7 @@ import { useState } from '@state/movie';
 import MovieCard from './MovieCard';
 import MovieService from '#services/movie';
 import { computed, onMounted, onUnmounted, ref } from 'vue';
-import { moviesFilter } from '@utils/moviesFilter.util';
+import { moviesFilter } from '@utils/filters/moviesFilter.util';
 export default {
   components: {
     MovieCard

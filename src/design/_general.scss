@@ -1,0 +1,12 @@
+header.banner {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.logo {
+  @extend %typography-xlarge;
+  color: white;
+  span {
+    @extend %typography-large;
+    color: $primary-color;
+  }
+}

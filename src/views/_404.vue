@@ -4,7 +4,7 @@ export default {
 </script>
 
 <template>
-  <div></div>
+  <div>Pagina não encontrada</div>
 </template>
 
 <style lang="scss" module>

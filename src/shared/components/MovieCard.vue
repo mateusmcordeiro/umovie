@@ -35,7 +35,7 @@ import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import BaseCard from './base/BaseCard';
 import BaseIcon from './base/BaseIcon.vue';
-import { formatDateWithMonthLiteral } from '../utils/dateFilter.util';
+import { formatDateWithMonthLiteral } from '../utils/filters/dateFilter.util';
 
 export default {
   props: {
