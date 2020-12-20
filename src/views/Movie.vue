@@ -76,8 +76,8 @@ export default {
     ,10);
     MovieService.use(state).get(movieId).then(
       ({movie, credits}) => {
-        movieInfos.set(movieId,movie.data)
-        movieCredits.set(movieId,credits.data)
+        movieInfos.set(movieId,movie.data);
+        movieCredits.set(movieId,credits.data);
       }
     );
     const movie = computed(() => {

@@ -14,7 +14,8 @@ export const createState = () => reactive({
       release_date: false
     }
     
-  }
+  },
+  loading: false
 });
 
 export const useState = () => inject(stateSymbol);
