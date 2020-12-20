@@ -1,7 +1,7 @@
 <template>
   <div class="movie__list container">
     <MovieCard 
-        v-for="movie in reactiveData.movieListAll"
+        v-for="movie in moviesFilter(reactiveData.movieListAll, filters)"
         :key="movie.id"
         :title="movie.title" 
         :description="movie.release_date" 
@@ -17,14 +17,14 @@ import { useState } from '@state/movie';
 import MovieCard from './MovieCard';
 import MovieService from '#services/movie';
 import { computed, onMounted, onUnmounted, reactive } from 'vue';
-
+import { moviesFilter } from '@utils/moviesFilter.util';
 export default {
   components: {
     MovieCard
   },
   setup() {      	
     const state = useState();
-    const { movieList, pagination } = state;
+    const { movieList, pagination, filters } = state;
     const reactiveData = reactive({
       movieListAll: computed(() => {
         if(movieList.size > 0) {
@@ -44,7 +44,7 @@ export default {
         movieList.set(data.page, data);
       }
     );
-
+    filters.vote_average = true;
     const handleScroll = () => {
       const mouseOnBottom =  document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
       if (mouseOnBottom) {
@@ -69,7 +69,7 @@ export default {
       }
     ) 
     
-    return { movieList, reactiveData }
+    return { movieList, reactiveData, filters, moviesFilter }
   }
 }
 </script>

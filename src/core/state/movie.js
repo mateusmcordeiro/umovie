@@ -8,7 +8,7 @@ export const createState = () => reactive({
   pagination: {
     page: 1
   },
-  filter: {
+  filters: {
     vote_average: false,
     release_date: false
   }

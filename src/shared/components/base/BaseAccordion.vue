@@ -1,10 +1,10 @@
 <template>
   <div class="accordion" :class="{'active': reactiveData.active}" @click="toggleActive">
-    <header>
+    <header class="accordion__header">
       <slot name="header"></slot>
       <BaseIcon>
         <template v-slot:svg>
-          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 11v-11h1v11h11v1h-11v11h-1v-11h-11v-1h11z"/></svg>
+          <svg class="icon__expand" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 11v-11h1v11h11v1h-11v11h-1v-11h-11v-1h11z"/></svg>
         </template>
       </BaseIcon>
     </header>
@@ -23,12 +23,19 @@ export default {
     BaseIcon
   },
   setup() {    
-    let reactiveData = reactive({
+    const reactiveData = reactive({
       active: false
-    }) ;
-    const toggleActive = () => {
-      reactiveData.active = !reactiveData.active;
-      console.log(reactiveData.active);
+    });
+    const toggleActive = ($event) => {
+      if (
+        $event.target.className === 'accordion__header' 
+        || 
+        $event.target.nodeName === 'svg' 
+        || 
+        $event.target.nodeName === "path"
+      ) {
+        reactiveData.active = !reactiveData.active;
+      }
     }
     return { reactiveData, toggleActive }
   }
