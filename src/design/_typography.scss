@@ -353,8 +353,15 @@ $typography-line-heights-contrast: (
   @extend %font-content;
 }
 
+
 %typography-small {
   @include typography-got-rhythm(-1);
 
   @extend %font-content;
+}
+
+%typography-small-heading {
+  @include typography-got-rhythm(-1);
+
+  @extend %font-heading;
 }
