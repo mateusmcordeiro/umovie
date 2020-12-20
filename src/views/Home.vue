@@ -1,8 +1,10 @@
 <template>
-  <header class="header container">
-    <h1 class="logo">
-      <span>u</span>Movie
-    </h1>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">
+        <span>u</span>Movie
+      </h1>
+    </div>
   </header>
   <article class="container">
     <section class="movie__content">
