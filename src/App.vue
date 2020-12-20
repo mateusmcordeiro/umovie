@@ -1,14 +1,23 @@
 <template>
-  <HelloWorld/>
+  <main>
+    <Home/>
+  </main>
+  
 </template>
 
 <script>
-import HelloWorld from '@components/HelloWorld.vue'
+import Home from '@views/Home.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Home
   }
 }
 </script>
+<style lang="scss" scoped>
+  @import "@design";
+  main {
+    background-color: $shark-color;
+  }
+</style>
