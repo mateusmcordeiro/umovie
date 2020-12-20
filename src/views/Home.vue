@@ -7,6 +7,7 @@
   <article class="container">
     <section class="movie__content">
       <h2 class="description">Filmes em cartaz</h2>
+      <MovieListFilter/>
       <MovieList/>
     </section>
     
@@ -16,11 +17,13 @@
 
 <script>
 import MovieList from '@components/MovieList.vue'
+import MovieListFilter from '@components/MovieListFilter.vue';
 
 export default {
   name: 'App',
   components: {
-    MovieList
+    MovieList,
+    MovieListFilter
   }
 }
 </script>
@@ -45,5 +48,9 @@ header {
 }
 .movie__content {
   margin-top: 50px;
+}
+.accordion {
+  margin-bottom: 20px;
+  border-radius: 3px;
 }
 </style>
