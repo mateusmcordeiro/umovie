@@ -6,7 +6,7 @@
         :title="movie.title" 
         :description="movie.release_date" 
         :image="movie.poster_path" 
-        :redirectTo="`/movie/${movie.id}`" 
+        :movieId="movie.id" 
         :votes="movie.vote_average"
       />
   </div>

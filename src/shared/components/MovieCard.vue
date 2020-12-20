@@ -32,6 +32,7 @@
 
 <script>
 import { computed } from 'vue';
+import { useRouter } from 'vue-router';
 import BaseCard from './base/BaseCard';
 import BaseIcon from './base/BaseIcon.vue';
 import { formatDateWithMonthLiteral } from '../utils/dateFilter.util';
@@ -42,16 +43,22 @@ export default {
     description: String,
     image: String,
     votes: Number,
-    redirectTo: String
+    movieId: Number
   },
   components: {
     BaseCard,
     BaseIcon  
   },
-  setup(props) {      	
-    const redirectToMovie = ($event) => {
-      console.log($event);
-      console.log(props.redirectTo);
+  setup(props) {      
+    const router = useRouter();
+    const redirectToMovie = () => {
+      router.push(
+        { 
+          name: 'movie', 
+          params: { 
+            movieId: props.movieId
+        } 
+      })
     }
     const posterImage = computed(() => `//image.tmdb.org/t/p/w220_and_h330_face${props.image}`)
     const dateFormatted = computed(() => formatDateWithMonthLiteral(props.description));
