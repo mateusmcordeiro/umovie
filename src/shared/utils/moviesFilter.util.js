@@ -1,9 +1,9 @@
 import { isAfter, parseISO } from "date-fns";
 
 export const moviesFilter = (moviesListResultArray, filters) => {
-  if (filters.vote_average) {
+  if (filters.orderBy.vote_average) {
     return orderbyVoteAverage(moviesListResultArray);
-  } else if (filters.release_date) {
+  } else if (filters.orderBy.release_date) {
     return orderByReleaseDate(moviesListResultArray);
   }
   return moviesListResultArray;

@@ -9,8 +9,11 @@ export const createState = () => reactive({
     page: 1
   },
   filters: {
-    vote_average: false,
-    release_date: false
+    orderBy: {
+      vote_average: false,
+      release_date: false
+    }
+    
   }
 });
 

@@ -1,7 +1,7 @@
 <template>
   <div class="movie__list container">
     <MovieCard 
-        v-for="movie in moviesFilter(reactiveData.movieListAll, filters)"
+        v-for="movie in moviesFilter(movieListAll, filters)"
         :key="movie.id"
         :title="movie.title" 
         :description="movie.release_date" 
@@ -16,7 +16,7 @@
 import { useState } from '@state/movie';
 import MovieCard from './MovieCard';
 import MovieService from '#services/movie';
-import { computed, onMounted, onUnmounted, reactive } from 'vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { moviesFilter } from '@utils/moviesFilter.util';
 export default {
   components: {
@@ -25,8 +25,8 @@ export default {
   setup() {      	
     const state = useState();
     const { movieList, pagination, filters } = state;
-    const reactiveData = reactive({
-      movieListAll: computed(() => {
+    const movieListAll = ref(
+       computed(() => {
         if(movieList.size > 0) {
           return [...movieList.entries()].reduce(
              // eslint-disable-next-line
@@ -38,7 +38,7 @@ export default {
         }
         return [];
       })
-    });
+    )
     MovieService.use(state).fetchList('now_playing').then(
       ({data}) => {
         movieList.set(data.page, data);
@@ -69,7 +69,7 @@ export default {
       }
     ) 
     
-    return { movieList, reactiveData, filters, moviesFilter }
+    return { movieList, movieListAll, filters, moviesFilter }
   }
 }
 </script>

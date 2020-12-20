@@ -57,6 +57,7 @@ export default {
     align-items: center;
     @extend %typography-small-heading;
   }
+
   .accordion__expand {
     height: auto;
     max-height: 0px;
