@@ -11,35 +11,39 @@
           <div class="movie__image">
             <img :src="moviePosterImage"/>
           </div>
-          <div class="movie__infos block">
-            <h1 class="block__title">
-              {{ movie.title }}
-            </h1>
-            <p class="block__text">
-              <span>{{ formatDateWithMonthLiteral(movie.release_date) }}</span>
-            </p>
-            <div class="block__content">
-              <BaseBadge v-for="genre in movie.genres" :key="genre.id">
-                {{genre.name}}
-              </BaseBadge>
-            </div>
-            <div class="block__content vote">
-              <p class="title">Nota da população</p>
-              <BaseProgress :percentage="movie.vote_average*10"/>
-            </div>
-            <div class="block__content">
-              <p class="title">Sinopse</p>
-              <p class="text">
-                  {{ movie.overview }}
+          <article>
+            
+            <div class="movie__infos block">
+              <h1 class="block__title">
+                {{ movie.title }}
+              </h1>
+              <p class="block__text">
+                <span>{{ formatDateWithMonthLiteral(movie.release_date) }}</span>
               </p>
-            </div>
-            <div class="block__content">
-              <p class="title">Casts</p>
-              <div class="casts">
-                <MovieCastsCard v-for="cast in movieCasts" :key="cast.id" :cast="cast"/>
+              <div class="block__content">
+                <BaseBadge v-for="genre in movie.genres" :key="genre.id">
+                  {{genre.name}}
+                </BaseBadge>
+              </div>
+              <div class="block__content vote">
+                <p class="title">Nota da população</p>
+                <BaseProgress :percentage="movie.vote_average*10"/>
+              </div>
+              <div class="block__content">
+                <p class="title">Sinopse</p>
+                <p class="text">
+                    {{ movie.overview }}
+                </p>
+              </div>
+              <div class="block__content content__cast">
+                <p class="title">Casts</p>
+                <div class="casts">
+                  <MovieCastsCard v-for="cast in movieCasts" :key="cast.id" :cast="cast"/>
+                </div>
               </div>
             </div>
-          </div>
+          </article>
+          
         </div>
         
       </div>
@@ -122,7 +126,7 @@ header {
 .banner__backdrop {
   left: 0;
   top: 0;
-  position: absolute;
+  position: fixed;
   background-size: cover;
   height: 400px;
   background-position: center;
@@ -131,11 +135,11 @@ header {
   height: 100%;
   z-index: $layer-page-z-index;
   &:after {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     content: " ";
     background: linear-gradient(180deg, black 8%, rgba(0, 0, 0, 0.7371149143) 47%, rgba(0, 0, 0, 0.5830532897) 100%);
     transition: opacity 0.4s;
@@ -145,16 +149,29 @@ header {
 .movie__informations {
   margin-top: 50px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr ;
   column-gap: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  @include media-breakpoint-up(md) {
+    grid-template-columns: 1fr 1fr;
+  }
   @include media-breakpoint-up(xl) {
     grid-template-columns: 1fr 2fr;
   }
   
   .movie__image {
-    
+    img {
+      @include media-breakpoint-down(md) {
+        margin: 0 auto;
+        display: flex;
+      }
+    }
   }
   .movie__infos {
+     @include media-breakpoint-down(md) {
+       margin-top: 20px;
+     }
     .block__content {
       margin-top: 10px;
       display: flex;
@@ -186,6 +203,21 @@ header {
         @extend %typography-small;
         font-weight: 400;
         font-size: 14px;
+      }
+      &.content__cast {
+        width: 300px;
+        @include media-breakpoint-up(sm) {
+          width: 400px;
+        }
+        @include media-breakpoint-up(md) {
+          width: 320px;
+        }
+        @include media-breakpoint-up(lg) { 
+          width: 500px;
+        }
+        @include media-breakpoint-up(xl) { 
+          width: 700px;
+        }
       }
     }
     .block__title {

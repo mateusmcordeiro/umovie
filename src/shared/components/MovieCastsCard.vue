@@ -25,7 +25,6 @@ export default {
   },
   setup(props) {      
     const image = computed(() => {
-      console.log(props)
       return `https://image.tmdb.org/t/p/w220_and_h330_face${props.cast.profile_path}`
     })
     return { props, image }
