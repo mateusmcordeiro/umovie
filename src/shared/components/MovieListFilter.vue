@@ -7,11 +7,16 @@
       <div class="filter__list">
         <fieldset class="select__group">
           <legend>Ordenar por:</legend>
-          <select v-model="orderBy" @change="orderByChanged">
+          <select v-model="state.filters.orderBy.orderFactor" @change="orderByChanged">
             <option value="" disabled>selecione</option>
             <option value="vote_average">Nota da população</option>
             <option value="release_date">Data de lançamento</option>
           </select>
+      </fieldset>
+      <fieldset v-show="state.filters.orderBy.orderFactor.length > 0">
+        <legend>Orientação</legend>
+        <input v-model="state.filters.orderBy.orientation" type="radio" id="asc" value="1"> <label for="asc">Descendente</label>
+        <input v-model="state.filters.orderBy.orientation" type="radio" id="desc" value="-1"> <label for="desc">Ascendente</label>
       </fieldset>
       </div>
     </template>
@@ -21,23 +26,14 @@
 <script>
 import { useState } from '@state/movie';
 import BaseAccordion from './base/BaseAccordion';
-import { ref } from 'vue';
 export default {
   components: {
     BaseAccordion
   },
   setup() {   
     const state = useState();   
-    const orderBy = ref('')	
-    const orderByChanged = () => {
-      for (const prop in state.filters.orderBy) {
-        state.filters.orderBy[prop] = false;
-      }
-      if (orderBy.value.length > 0) {
-        state.filters.orderBy[orderBy.value] = true;
-      }
-    }
-    return { orderByChanged, orderBy }
+
+    return { state }
   }
 }
 </script>
@@ -49,8 +45,7 @@ export default {
 
   }
   .select__group {
-    margin: 0;
-    border: none;
+    
     background-color: white;
     padding: 3px;
     border-radius: 3px;
@@ -73,6 +68,25 @@ export default {
       border: none;
       padding-top: 12px;
       background-color: white;
+    }
+  }
+  fieldset {
+    margin: 0;
+    border: none;
+    margin-top: 10px;
+    padding: 0;
+    font-family: Barlow;
+    legend {
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $primary-color;
+      font-size: 10px;
+    }
+    label {
+      font-family: Lato;
+      font-size: 10px;
+      color: white;
+      letter-spacing: 1px;
     }
   }
 </style>

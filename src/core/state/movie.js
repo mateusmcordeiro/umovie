@@ -11,8 +11,8 @@ export const createState = () => reactive({
   },
   filters: {
     orderBy: {
-      vote_average: false,
-      release_date: false
+      orderFactor: '',
+      orientation: 1
     }
     
   },
