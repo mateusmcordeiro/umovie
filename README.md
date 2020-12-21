@@ -1,7 +1,7 @@
 
 # UMovie
 
-Projeto para estudo e implementação de pequeno aplicação usando o Vue 3 e a Composition API.
+Projeto para estudo e implementação de uma pequena aplicação usando o Vue 3 e a Composition API.
 
 ## Instalação
 
