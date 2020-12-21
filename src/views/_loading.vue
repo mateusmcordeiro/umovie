@@ -1,18 +1,17 @@
 
 <template>
-  <div class="loading" :class="{'active': props.active}">
+  <div class="loading" :class="{'active': loading}">
 
   </div>
 </template>
 <script>
+import { useState } from '@state/movie';
+
 export default {
-  props:  {
-    active: Boolean
-  },
-  setup(props) {
-    return {
-      props
-    }
+  setup() {
+    const state = useState();
+    const loading = state.pagination.loading;
+    return { loading }
   }
 }
 </script>

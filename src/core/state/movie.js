@@ -6,6 +6,7 @@ export const createState = () => reactive({
   movieCredits: new Map(),
   movieList: new Map(),
   pagination: {
+    loading: false,
     page: 1
   },
   filters: {
@@ -15,7 +16,6 @@ export const createState = () => reactive({
     }
     
   },
-  loading: false
 });
 
 export const useState = () => inject(stateSymbol);

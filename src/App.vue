@@ -1,13 +1,12 @@
 <template>
   <main>
     <router-view />
-    <Loading :active="loading"/>
+    <Loading/>
   </main>
   
 </template>
 
 <script>
-import { useState } from '@state/movie';
 import Loading from '@views/_loading.vue';
 export default {
   components: {
@@ -15,9 +14,7 @@ export default {
   },
   name: 'App',
   setup() {
-    const state = useState();
-    const { loading } = state;
-    return { loading }
+
   }
 }
 </script>

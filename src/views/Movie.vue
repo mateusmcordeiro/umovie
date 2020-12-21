@@ -54,7 +54,7 @@
 import { useRouter } from 'vue-router';
 import { useState } from '@state/movie';
 import MovieService from '#services/movie';
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { formatDateWithMonthLiteral } from '@utils/filters/dateFilter.util';
 import BaseBadge  from '../shared/components/base/BaseBadge.vue';
 import BaseProgress  from '../shared/components/base/BaseProgress.vue';
@@ -74,12 +74,21 @@ export default {
         window.location.pathname.indexOf('/movie/') + '/movie/'.length, window.location.pathname.length
       )
     ,10);
-    MovieService.use(state).get(movieId).then(
-      ({movie, credits}) => {
-        movieInfos.set(movieId,movie.data);
-        movieCredits.set(movieId,credits.data);
-      }
-    );
+
+    onMounted(() => {
+      state.pagination.loading = true;
+      MovieService.use(state).get(movieId).then(
+        ({movie, credits}) => {
+          movieInfos.set(movieId,movie.data);
+          movieCredits.set(movieId,credits.data);
+        }
+      ).finally(
+        () => {
+          state.pagination.loading = false;
+        }
+      );
+    });
+    
     const movie = computed(() => {
       return movieInfos.get(movieId);
     });
@@ -201,6 +210,7 @@ header {
         width: 100%;
         max-width: 784px;
         margin-top: 10px;
+        position: relative;
         .card {
           max-width: 148px;
           max-height: 222px;

@@ -19,6 +19,7 @@ export default {
     });
 
     const loadMoreItems = () => {
+      state.pagination.loading = true;
       loadingMovies.value = true;
       MovieService.use(state).fetchList('now_playing', { page: pagination.page + 1, language: 'pt-br' }).then(
         ({data}) => {
@@ -28,6 +29,7 @@ export default {
       ).finally(
         () => {
           loadingMovies.value = false;
+          state.pagination.loading = true;
         }
       );
     }

@@ -40,14 +40,14 @@ export default {
       })
     )
     onMounted(() => {
-      state.loading = true;
+      state.pagination.loading = true;
       MovieService.use(state).fetchList('now_playing').then(
         ({data}) => {
           movieList.set(data.page, data);
         }
       ).finally(
         () => {
-          state.loading = false;
+          state.pagination.loading = false;
         }
       );
     })
