@@ -11,3 +11,27 @@ header.banner {
     color: $primary-color;
   }
 }
+
+.button {
+  cursor: pointer;
+  width: 220px;
+  height: 45px;
+  background-color: $primary-color;
+  color: white;
+  border: 1px solid $primary-color;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .4s, color .4s;
+  &.loading {
+    pointer-events: none;
+    background-color: gray;
+  }
+  &:hover {
+    background-color: transparent;
+    color: $primary-color;
+  }
+}

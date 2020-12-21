@@ -16,7 +16,7 @@
 import { useState } from '@state/movie';
 import MovieCard from './MovieCard';
 import MovieService from '#services/movie';
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { moviesFilter } from '@utils/filters/moviesFilter.util';
 export default {
   components: {
@@ -24,7 +24,7 @@ export default {
   },
   setup() {      	
     const state = useState();
-    const { movieList, pagination, filters } = state;
+    const { movieList, filters } = state;
     const movieListAll = ref(
        computed(() => {
         if(movieList.size > 0) {
@@ -45,32 +45,12 @@ export default {
         ({data}) => {
           movieList.set(data.page, data);
         }
+      ).finally(
+        () => {
+          state.loading = false;
+        }
       );
     })
-    
-    const handleScroll = () => {
-      const mouseOnBottom =  document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
-      if (mouseOnBottom) {
-        MovieService.use(state).fetchList('now_playing', { page: pagination.page + 1, language: 'pt-br' }).then(
-          ({data}) => {
-            movieList.set(data.page, data);
-            pagination.page = data.page;
-          }
-        );
-      }
-    }
-
-    onMounted(
-      () => {
-        window.addEventListener('scroll', handleScroll);
-      }
-    ) 
-    
-    onUnmounted(
-      () => {
-        window.removeEventListener('scroll', handleScroll);
-      }
-    ) 
     
     return { movieList, movieListAll, filters, moviesFilter }
   }

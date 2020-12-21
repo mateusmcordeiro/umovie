@@ -11,6 +11,7 @@
       <h2 class="description">Filmes em cartaz</h2>
       <MovieListFilter/>
       <MovieList/>
+      <MovieListInfiniteScroll/>
     </section>
     
   </article>
@@ -19,24 +20,18 @@
 <script>
 import MovieList from '@components/MovieList.vue'
 import MovieListFilter from '@components/MovieListFilter.vue';
-import { ref, watch } from 'vue';
-import { useRouter } from 'vue-router';
+import MovieListInfiniteScroll from '../shared/components/MovieListInfiniteScroll.vue';
 
 export default {
   name: 'App',
   components: {
     MovieList,
-    MovieListFilter
+    MovieListFilter,
+    MovieListInfiniteScroll
   },
   setup() {
-    let transitionName = ref('');
-    watch(useRouter, (to, from) => {
-      const toDepth = to.path.split('/').length
-      const fromDepth = from.path.split('/').length
-      transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
-    })
+  
     return {
-      transitionName
     }
   }
   

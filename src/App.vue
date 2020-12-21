@@ -24,6 +24,7 @@ export default {
 <style lang="scss" scoped>
   @import "@design";
   main {
+    padding-bottom: 50px;
     background-color: $shark-color;
   }
 </style>
